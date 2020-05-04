@@ -5,14 +5,13 @@ class UsersController extends CI_Controller{
 	function __construct()
 	{
     parent::__construct();
-    $this->load->database('default');
-    $this->load->model('UserModel', 'user');
+    $this->load->library(['curl']);
   }
 
   public function show() {
     if($this->session->has_userdata('user_uid')) {
       $uid = $this->session->userdata('user_uid');
-      $user = $this->user->find_by_uid($uid);
+      $user = $this->curl->simple_get(SERVICE_BASE_URL.'/users', ['id' => $uid]);
 
       return $this->load->view('users/show', ['user' => $user]);
     } else {
