@@ -32,10 +32,16 @@ class OauthController extends RequestController{
         'nama_belakang' => $user_info['family_name'],
         'foto' => $user_info['picture']
       ];
+      $cust_params = [
+        'nik1' => $user_info['id'],
+        'nama1' => $user_info['name'],
+        'telepon1' => '-'
+      ];
       $this->set_http_basic_auth();
-      $user = $this->curl->simple_post(SERVICE_BASE_URL.'/users', $user_params, [CURLOPT_BUFFERSIZE => 20]);
+      $this->curl->simple_post(SERVICE_BASE_URL.'/users', $user_params, [CURLOPT_BUFFERSIZE => 20]);
+      $this->curl->simple_post(SERVICE_BASE_URL.'/pelanggan', $cust_params, [CURLOPT_BUFFERSIZE => 20]);
 
-      redirect('/index.php/profile');
+      redirect( site_url('Pelanggan/index') );
     } else {
       redirect( base_url() );
     }
