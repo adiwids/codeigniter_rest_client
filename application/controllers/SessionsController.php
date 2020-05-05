@@ -9,7 +9,7 @@ class SessionsController extends CI_Controller{
 	}
 
 	public function create(){
-		if($this->session->has_userdata('user_uid')) {
+		if($this->session->has_userdata('auth_token')) {
 			redirect('/profile');
 		} else {
 			$data['loginURL'] = $this->googleplus->loginURL();
