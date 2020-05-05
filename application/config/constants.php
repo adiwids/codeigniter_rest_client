@@ -86,4 +86,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /* TODO #4 */
 /* Ganti dengan URL server.tukangunduh.my.id: http://server.tukangunduh.my.id */
-defined('SERVICE_BASE_URL')    OR define('SERVICE_BASE_URL', 'http://localhost:8001/index.php'); // Alamat web service
+defined('SERVICE_BASE_URL')    OR define('SERVICE_BASE_URL', 'http://server.tukangunduh.my.id/index.php'); // Alamat web service
