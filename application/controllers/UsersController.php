@@ -1,18 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class UsersController extends CI_Controller{
+require APPPATH.'/controllers/RequestController.php';
 
-	function __construct()
-	{
-    parent::__construct();
-    $this->load->database('default');
-    $this->load->model('UserModel', 'user');
-  }
-
+class UsersController extends RequestController{
   public function show() {
-    if($this->session->has_userdata('user_uid')) {
-      $uid = $this->session->userdata('user_uid');
-      $user = $this->user->find_by_uid($uid);
+    if($this->session->has_userdata('auth_token')) {
+      $this->set_http_basic_auth();
+      $user = json_decode($this->curl->simple_get(SERVICE_BASE_URL.'/users'));
 
       return $this->load->view('users/show', ['user' => $user]);
     } else {
