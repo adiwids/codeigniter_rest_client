@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* TODO #2 */
 /* Ganti dengan URL tukangunduh.my.id: http://tukangunduh.my.id */
-$config['base_url'] = 'http://tukangunduh.my.id';
+$config['base_url'] = 'http://localhost:8000';
 
 /*
 |--------------------------------------------------------------------------
