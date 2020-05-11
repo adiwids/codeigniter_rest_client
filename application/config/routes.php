@@ -49,9 +49,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Pelanggan/index';
+$route['default_controller'] = 'SessionsController/create';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['oauth/callback']['get'] = 'OauthController/callback';
-$route['profile']['get'] = 'UsersController/show';
+$route['profile']['get'] = 'UsersController/profile';
 $route['logout']['delete'] = 'SessionsController/destroy';
+$route['users']['get'] = 'UsersController/index';
+$route['users/(:any)']['get'] = 'UsersController/show/$1';
+$route['users/(:any)/delete']['post'] = 'UsersController/destroy/$1';
+$route['users/(:any)/update']['post'] = 'UsersController/update/$1';
+$route['users/(:any)/edit']['get'] = 'UsersController/edit/$1';
+$route['customers']['get'] = 'CustomersController/index';
